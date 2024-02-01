@@ -29,6 +29,7 @@ export default class BurgerPane extends Component {
                 <ul>
                     { burgerBits }
                 </ul>
+                <button onClick={this.props.clear}>Clear Burger</button>
             </section>
         )
     }

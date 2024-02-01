@@ -51,14 +51,23 @@ export default class BurgerStacker extends Component {
         // class components use a special method to update their state
         // This method is called 'setState'
         // setState is expecting an object, and within that object, we can refer to an individual piece of state to update
+        // the line in there is saying, grab all the burgerIngredients, keep them in the array, and add the new ingredient to the front of the array
         this.setState({
             burgerIngredients: [{ name: ingName, color: ingColor }, ...this.state.burgerIngredients]
+        })
+    }
+
+    // this clears the burgerIngredients array, effectively clearing the burger
+    clearBurger = () => {
+        this.setState({
+            burgerIngredients: [],
         })
     }
 
     // there is one thing that all class components need to do
     // they need to call the render method. Just like all function components need to return something. 
     render () {
+        console.log('this is burgerIngredients', this.state.burgerIngredients)
         // whatever we return from the render method is the jsx we see on the page
         return (
             <>
@@ -70,6 +79,7 @@ export default class BurgerStacker extends Component {
                     />
                     <BurgerPane 
                         ingredients={this.state.burgerIngredients}
+                        clear={this.clearBurger}
                     />
                 </div>
             </>
